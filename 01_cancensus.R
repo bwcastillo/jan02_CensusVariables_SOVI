@@ -62,8 +62,19 @@ query21da_sf2<-get_census(dataset='CA21',
                         level="DA",
                         geo_format = 'sf')
 
-#Spatial #3
 
+#Spatial #3 MAKING Troubles
+
+query21da_sf3<-list()
+for (i in 28967:43450){a<-get_census(dataset='CA21',
+                                  regions= list(DA=boundaries21$DAUID[i]),
+                                  vector=query,
+                                  level="DA",
+                                  geo_format = 'sf',
+                                  use_cache = F)
+                        query21da_sf3[[i]]<-a
+                        }
+       
 query21da_sf3<-get_census(dataset='CA21',
                         regions= list(DA=boundaries21$DAUID[(28966+1):43450]),
                         vector=query,
@@ -71,7 +82,7 @@ query21da_sf3<-get_census(dataset='CA21',
                         geo_format = 'sf',
                         use_cache = F)
 
-#Spatial #4
+#Spatial #4 MAKING Troubles
 
 query21da_sf3<-get_census(dataset='CA21',
                         regions= list(DA=boundaries21$DAUID[43451:57932]),
@@ -83,11 +94,44 @@ query21da_sf3<-get_census(dataset='CA21',
 #https://open.canada.ca/data/en/dataset/750e6035-adf8-4426-966f-4c25b12a999e
 
 
+rm(boundaries21)
 # Joining datasets --------------------------------------------------------
 
+query21da<-rbind(query21da,query21da_2)
+
+rm(query21da_2)
+
+# Changing names -----------------------------------------------------------
+
+nombres<-c("TOTPOP","TOTDWELL","POPDENSITY","BELOW15","WORKAGE","SENIOR",
+           "ABOVE85","FEMALE","ONEPERSONHH","NOLANG","GOVTRANSFER","MEDHHINC",
+           "LOWINCOME","LOWINCOME1","LOWINCWORKAGE","LOWINCSENIOR",
+           "RECENTIMMIGRANT","FIRSTGENERATION","TOTVISMIN","SOUTHASIAN",
+           "CHINESE","BLACK","FILIPINO","LATINAMERICAN","ARAB","SOUTHEASTASIAN",
+           "WESTASIAN","KOREAN","JAPANESE","VISMIN_NIE","MULTI_VINMIN",
+           "NONVISMIN","FRSTNATION","METIS","INUIT","RENTER","CROWDHOME",
+           "REPAIRHOME","SHLTCOSTR","MEDHOMVAL","NODEGREE","UNEMPLOYED","NILF",
+           "PUBTRANSIT","MOVERS","APT5STORY","LONEPARENT","BUILT1960")
 
 
-# Chaning names -----------------------------------------------------------
+#Unifying names and col codes
 
+code_abvt<-data.frame(code=query,abbrvtn=nombres)
+
+target<-sub(":.*", "", colnames(query21da))[12:59]
+
+code_abvt<-code_abvt[match(target,code_abvt$code),]
+
+#Veryifing that the reorder is correct
+
+code_abvt$code==target
+
+# Changing colnames -------------------------------------------------------
+liton_dataset<-query21da
+
+#Back up query
+colnames(liton_dataset)[12:59]<-code_abvt$abbrvtn
+
+liton_dataset
 
 
