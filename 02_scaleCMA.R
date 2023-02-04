@@ -3,13 +3,12 @@ library(cancensus)
 library(tidyverse)
 
 options(cancensus.api_key = "CensusMapper_ec721325d8f0b73622eb6a175f8de05a")
-set_cancensus_cache_path("C:\\CEDEUS\\2022\\oct03_census2021\\cache")
+set_cancensus_cache_path(paste0(here::here(),"\\cache"))
 
 
 # https://www12.statcan.gc.ca/census-recensement/2021/ref/dict/fig/index-eng.cfm?ID=F1_1
 # https://www12.statcan.gc.ca/census-recensement/2021/ref/98-304/2021001/chap11-eng.cfm
 
-#boundaries21cma<-st_read("C:\\CEDEUS\\2022\\oct03_census2021\\input\\boundaries_21CMA&CA\\lcma000b21a_e\\lcma000b21a_e.shp")
 #rm(boundaries21cma)
 #unique(query21da$CMA_UID)
 
@@ -60,11 +59,11 @@ col_format<-function(x){
   return(x)
 }
 
-query21cd_liton<-col_format(query21cd)
-query21csd_liton<-col_format(query21csd)
-query21cma_liton<-col_format(query21cma)
-query21ct_liton<-col_format(query21ct)
-query21da_liton<-col_format(query21da)
+query21cd_form<-col_format(query21cd)
+query21csd_form<-col_format(query21csd)
+query21cma_form<-col_format(query21cma)
+query21ct_form<-col_format(query21ct)
+query21da_form<-col_format(query21da)
 
 
 # Saving data -------------------------------------------------------------
@@ -86,14 +85,15 @@ writexl::write_xlsx(query21da,"output/rawdata/xlsx/query21da.xlsx")
 
 # Formated data
 
-write.csv(query21cd_liton,"output/formated/csv/query21cd_form.csv")
-write.csv(query21csd_liton,"output/formated/csv/query21csd_form.csv")
-write.csv(query21cma_liton,"output/formated/csv/query21cma_form.csv")
-write.csv(query21ct_liton,"output/formated/csv/query21ct_form.csv")
-write.csv(query21da_liton,"output/formated/csv/query21da_form.csv")
+write.csv(query21cd_form,"output/formated/csv/query21cd_form.csv")
+write.csv(query21csd_form,"output/formated/csv/query21csd_form.csv")
+write.csv(query21cma_form,"output/formated/csv/query21cma_form.csv")
+write.csv(query21ct_form,"output/formated/csv/query21ct_form.csv")
+write.csv(query21da_form,"output/formated/csv/query21da_form.csv")
 
-writexl::write_xlsx(query21cd_liton,"output/formated/xlsx/query21cd_form.xlsx")
-writexl::write_xlsx(query21csd_liton,"output/formated/xlsx/query21csd_form.xlsx")
-writexl::write_xlsx(query21cma_liton,"output/formated/xlsx/query21cma_form.xlsx")
-writexl::write_xlsx(query21ct_liton,"output/formated/xlsx/query21ct_form.xlsx")
-writexl::write_xlsx(query21da_liton,"output/formated/xlsx/query21da_form.xlsx")
+writexl::write_xlsx(query21cd_form,"output/formated/xlsx/query21cd_form.xlsx")
+writexl::write_xlsx(query21csd_form,"output/formated/xlsx/query21csd_form.xlsx")
+writexl::write_xlsx(query21cma_form,"output/formated/xlsx/query21cma_form.xlsx")
+writexl::write_xlsx(query21ct_form,"output/formated/xlsx/query21ct_form.xlsx")
+writexl::write_xlsx(query21da_form,"output/formated/xlsx/query21da_form.xlsx")
+
