@@ -18,7 +18,7 @@ boundaries21cd<-st_read(paste0(here::here(),"\\input\\boundaries_21CD\\lcd_000b2
 boundaries21cma<-st_read(paste0(here::here(),"input\\boundaries_21CMA&CA\\lcma000b21a_e\\lcma000b21a_e.shp"))
 boundaries21csd<-st_read(paste0(here::here(),"\\input\\boundaries_21CSD\\lcsd000b21a_e\\lcsd000b21a_e.shp"))
 boundaries21ct<-st_read(paste0(here::here(),"\\input\\boundaries_21CT\\lct_000b21a_e\\lct_000b21a_e.shp"))
-boundaries21pr<-st_read(paste0(here::here(),"input\\boundaries_21PR\\lpr_000b21a_e\\lpr_000b21a_e.shp"))
+boundaries21pr<-st_read(paste0(here::here(),"\\input\\boundaries_21PR\\lpr_000b21a_e\\lpr_000b21a_e.shp"))
 
 
 

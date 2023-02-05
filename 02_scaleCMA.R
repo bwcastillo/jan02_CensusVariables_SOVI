@@ -37,6 +37,7 @@ query21cd<-get_census(dataset='CA21',
                       use_cache = T)
 
 
+
 # Changing colnames names ----------------------------------------------------------
 
 
