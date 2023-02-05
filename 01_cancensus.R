@@ -16,7 +16,7 @@ unique(listReg21$level)
 boundaries21<-st_read(paste0(here::here(),"\\input\\boundaries_21DA\\lda_000b21a_e\\lda_000b21a_e.shp"))
 boundaries21cd<-st_read(paste0(here::here(),"\\input\\boundaries_21CD\\lcd_000b21a_e\\lcd_000b21a_e.shp"))
 boundaries21cma<-st_read(paste0(here::here(),"input\\boundaries_21CMA&CA\\lcma000b21a_e\\lcma000b21a_e.shp"))
-boundaries21csd<-st_read(paste0(here::here(),"oct03_census2021\\input\\boundaries_21CSD\\lcsd000b21a_e\\lcsd000b21a_e.shp"))
+boundaries21csd<-st_read(paste0(here::here(),"\\input\\boundaries_21CSD\\lcsd000b21a_e\\lcsd000b21a_e.shp"))
 boundaries21ct<-st_read(paste0(here::here(),"\\input\\boundaries_21CT\\lct_000b21a_e\\lct_000b21a_e.shp"))
 boundaries21pr<-st_read(paste0(here::here(),"input\\boundaries_21PR\\lpr_000b21a_e\\lpr_000b21a_e.shp"))
 
@@ -30,6 +30,7 @@ query<-paste0("v_CA21_",
                              4216,4239,4262,4274,4290,4311,5820,6501,6504,7644,
                              5751,440,528,4264))
               )
+
 
 
 # Querying ----------------------------------------------------------------
