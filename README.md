@@ -54,6 +54,7 @@ library(sf)
 library(cancensus)
 library(tidyverse)
 
+options(cancensus.api_key = "youAPIKEY")
 set_cancensus_cache_path(paste0(here::here(),"\\cache"))                                                 # Set-up the  cache
 boundaries21<-st_read(paste0(here::here(),"\\input\\boundaries_21DA\\lda_000b21a_e\\lda_000b21a_e.shp")) # Reading the boundary file
 
@@ -129,3 +130,8 @@ query21da_form<-col_format(query21da)                       # Aplying the functi
 write.csv(query21da,"output/rawdata/csv/query21cd.csv")                 # We save the results in csv format
 writexl::write_xlsx(query21da,"output/rawdata/xlsx/query21da.xlsx")     # We save the results in excel format
 ```
+How was mentioned above the code can be find in the next *.R* files:
+
+*01_cancensus-2021.R*: Dissemination Area queries - Census 2021. 
+*02_scales-2021.R*: Queries to another scales - Census 2021.
+*03_queries-2016.R: Queries for all the scales - Census 2016
