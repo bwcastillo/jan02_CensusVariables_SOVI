@@ -4,8 +4,9 @@ library(sf)
 library(cancensus)
 library(tidyverse)
 
-options(cancensus.api_key = "CensusMapper_ec721325d8f0b73622eb6a175f8de05a")
+options(cancensus.api_key = "youAPIKEY")
 set_cancensus_cache_path(paste0(here::here(),"\\cache"))
+
 listVar21 <- list_census_vectors("CA21")
 listReg21 <- list_census_regions("CA21")
 
@@ -50,9 +51,6 @@ query21da_2<-get_census(dataset='CA21',
                        level="DA",
                        use_cache = T)
 
-#Not available database census forward sortation areas :
-#https://open.canada.ca/data/en/dataset/750e6035-adf8-4426-966f-4c25b12a999e
-
 rm(boundaries21)
 
 # Joining datasets --------------------------------------------------------
@@ -61,7 +59,12 @@ query21da<-rbind(query21da,query21da_2)
 
 rm(query21da_2)
 
-# Changing names -----------------------------------------------------------
+
+
+# #Testing how to join names and col codes --------------------------------
+
+
+# Changing names 
 
 nombres<-c("TOTPOP","TOTDWELL","POPDENSITY","BELOW15","WORKAGE","SENIOR",
            "ABOVE85","FEMALE","ONEPERSONHH","NOLANG","GOVTRANSFER","MEDHHINC",
@@ -74,40 +77,13 @@ nombres<-c("TOTPOP","TOTDWELL","POPDENSITY","BELOW15","WORKAGE","SENIOR",
            "PUBTRANSIT","MOVERS","APT5STORY","LONEPARENT","BUILT1960")
 
 
-#Unifying names and col codes
-
 code_abvt<-data.frame(code=query,abbrvtn=nombres)
 
 target<-sub(":.*", "", colnames(query21da))[12:59]
 
 code_abvt<-code_abvt[match(target,code_abvt$code),]
 
-#Veryifing that the reorder is correct
+#Verifying that the reorder is correct
 
 code_abvt$code==target
 
-# Changing colnames Testing -------------------------------------------------------
-#liton_dataset<-query21da
-
-#Back up query
-#colnames(liton_dataset)[12:62]
-
-#liton_dataset
-
-
-# Selecting for Kasra and Sina CI paper -----------------------------------
-# 
-# query21da_ks <- read.csv("output/formated/csv/query21da_form.csv")
-# 
-# colnames(query21da_ks)[2:12]
-# 
-# c("TOTPOP","TOTDWELL","POPDENSITY","BELOW15","SENIOR","FEMALE","ONEPERSONHH",
-#   "NOLANG","LOWINCOME","LOWINCSENIOR","LONEPARENT","MEDHHINC","APT5STORY")
-# 
-# 
-# query21da_ks <- query21da_ks[,c(colnames(query21da_ks)[2:12],"TOTPOP","TOTDWELL","POPDENSITY","BELOW15","SENIOR","FEMALE","ONEPERSONHH",
-#                "NOLANG","LOWINCOME","LOWINCSENIOR","LONEPARENT","MEDHHINC","APT5STORY")]
-# 
-# 
-# write.csv(query21da_ks,"C:\\CEDEUS\\2022\\dec01_bbddSina_KasraPaper\\output\\3csv\\query21da_100.csv")
-# writexl::write_xlsx(query21da_ks,"C:\\CEDEUS\\2022\\dec01_bbddSina_KasraPaper\\output\\2excel\\query21da_100.xlsx")

@@ -6,8 +6,8 @@ options(cancensus.api_key = "CensusMapper_ec721325d8f0b73622eb6a175f8de05a")
 set_cancensus_cache_path(paste0(here::here(),"\\cache"))
 
 
-# https://www12.statcan.gc.ca/census-recensement/2021/ref/dict/fig/index-eng.cfm?ID=F1_1
-# https://www12.statcan.gc.ca/census-recensement/2021/ref/98-304/2021001/chap11-eng.cfm
+#https://www12.statcan.gc.ca/census-recensement/2021/ref/dict/fig/index-eng.cfm?ID=F1_1
+#https://www12.statcan.gc.ca/census-recensement/2021/ref/98-304/2021001/chap11-eng.cfm
 
 #rm(boundaries21cma)
 #unique(query21da$CMA_UID)
