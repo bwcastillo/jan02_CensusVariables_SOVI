@@ -132,6 +132,6 @@ writexl::write_xlsx(query21da,"output/rawdata/xlsx/query21da.xlsx")     # We sav
 ```
 How was mentioned above the code can be find in the next *.R* files:
 
-*01_cancensus-2021.R*: Dissemination Area queries - Census 2021. 
-*02_scales-2021.R*: Queries to another scales - Census 2021.
-*03_queries-2016.R: Queries for all the scales - Census 2016
+*01_cancensus-2021.R*: Dissemination Area queries - Census 2021. <br />
+*02_scales-2021.R*: Queries to another scales - Census 2021.<br />
+*03_queries-2016.R*: Queries for all the scales - Census 2016.
