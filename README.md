@@ -7,7 +7,7 @@ The extraction of these variables were done in the 2016 Canadian Census, but als
 has its respective code in CanCensus.
 
 |N°| Factor | Variable Description|  Variable Code Abbreviation|  CanCensus Code 2016  | CanCensus Code 2021 |
-|:------------- |:-------------:|:-------------:|:-------------:|:-------------:| -----:|
+|:------------- |:-------------:|:-------------:|:-------------:|:-------------:| :-----:|
 |1| Social | One-person households (%)| ONEPERHH | v_CA16_510|  v_CA21_553|
 |2| Social | Official language knowledge (People who know neither English nor French) %      |  NOLANG | v_CA16_524|v_CA21_1156 |
 |3| Social | Inhabitants with age 15 or older with no certificate/diploma/degree (%)   |    NODEGREE | v_CA16_5054|v_CA21_5820 |
